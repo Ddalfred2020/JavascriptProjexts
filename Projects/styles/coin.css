@@ -1,0 +1,47 @@
+
+ body{
+                background-color: black;
+                color: white;
+                font-family: Arial;
+            }
+            .tail-coin,
+            .head-coin{
+                height: 40px;
+                border-radius:30px ;
+                
+              
+            }
+            .head-button,
+            .tail-button{
+              height: 70px;
+              width: 70px;
+              background-color: transparent;
+              border: 2px solid white;
+              border-radius: 35px;
+              margin-left: 10px;
+            }
+            .coin-game{
+              font-size: 34px;
+              font-weight: bold;
+              font-family: Arial;
+              color: white;
+              border-color: black;
+              border-width:10px ;
+            }
+            .win{
+              font-size: 25px;
+              color: white;
+              margin-top: 90px;
+            }
+            .move{
+              margin-bottom: 50px;
+            }
+            .reset-button{
+              font-size: 16p;
+              padding: 8px 12px;
+              background-color: white;
+              border: none;
+              border-radius: 12px;
+              color: black;
+              margin-top: 6px;
+            }

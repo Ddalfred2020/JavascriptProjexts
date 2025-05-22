@@ -1,0 +1,57 @@
+
+/*the jason object convert the item in local storage back to javascript object so that it   can be store otherwise, the localStorage.getitem will get a jason string
+      the default || operator check if score is null, if score is null it make use of the right side which is the original score object
+                */
+        const score = JSON.parse(localStorage.getItem('score')) || {win:0,lose:0,tie:0} ;
+       
+          updateScore();
+          function playCoin(coinToss){
+          const computerMove =  computerCoinMove();//we checked if thecoinToss is head or tail so that we can make use of a paricular part of the if stataement
+            let result ='';
+            if(coinToss === 'head'){
+                   if(computerMove === 'tail'){
+                        result='you win'; 
+                   }else if(computerMove === 'head'){
+                        result ='you tie';
+                   }
+            }else if(coinToss === 'tail'){
+                    if(computerMove === 'head'){
+                        result='you lose'; 
+                   }else if(computerMove === 'tail'){
+                        result ='you tie';
+                   }
+            }
+              if(result === 'you tie'){
+                score.tie +=1;
+              }else if(result === 'you win'){
+                score.win +=1;
+              }else if(result === 'you lose'){
+                score.lose +=1;
+              }
+               updateScore();
+              document.querySelector('.js-result')
+                .innerHTML = result;
+              document.querySelector('.js-moves')
+               .innerHTML = `you toss <img src="coin-image/istockphoto-${coinToss}.jpg" class="tail-coin"> and the computer toss <img src="coin-image/istockphoto-${computerMove}.jpg" class="tail-coin">`
+          
+                 
+              localStorage.setItem('score',JSON.stringify(score))//score is stored in local storage,with the string to call it and the value to store converted to string using jason built in object
+     //result display in an alert
+        }
+         
+        function computerCoinMove(){
+              const randomNumber = Math.random();//computermove created in a function
+              let computerMove ='';
+            if(randomNumber>=0 && randomNumber<1/2){
+                 computerMove ='head';
+            }else if(randomNumber>=1/2 && randomNumber<1){
+                 computerMove = 'tail'
+            }
+           return computerMove   
+        }
+
+        function updateScore(){
+             document.querySelector('.js-score')
+               .innerHTML = `your scores: win ${score.win} tie ${score.tie} lose ${score.lose}`
+
+        }
